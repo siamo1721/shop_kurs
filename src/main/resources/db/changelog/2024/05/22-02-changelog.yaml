@@ -1,0 +1,177 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1716410273327-1
+      author: siamo (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: customer_seq
+            startValue: 1
+  - changeSet:
+      id: 1716410273327-2
+      author: siamo (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: employee_seq
+            startValue: 1
+  - changeSet:
+      id: 1716410273327-3
+      author: siamo (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: order_seq
+            startValue: 1
+  - changeSet:
+      id: 1716410273327-4
+      author: siamo (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: product_seq
+            startValue: 1
+  - changeSet:
+      id: 1716410273327-5
+      author: siamo (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: purchase_seq
+            startValue: 1
+  - changeSet:
+      id: 1716410273327-6
+      author: siamo (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_customer
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: first_name
+                  type: VARCHAR(255)
+              - column:
+                  name: last_name
+                  type: VARCHAR(255)
+              - column:
+                  name: phone
+                  type: VARCHAR(255)
+              - column:
+                  name: secondary_phone
+                  type: VARCHAR(255)
+            tableName: customer
+  - changeSet:
+      id: 1716410273327-7
+      author: siamo (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_employee
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: first_name
+                  type: VARCHAR(255)
+              - column:
+                  name: last_name
+                  type: VARCHAR(255)
+              - column:
+                  name: phone
+                  type: VARCHAR(255)
+            tableName: employee
+
+  - changeSet:
+      id: 1716410273327-9
+      author: siamo (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_product
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: quantity
+                  type: INT
+              - column:
+                  name: price
+                  type: DECIMAL
+              - column:
+                  name: discount
+                  type: DECIMAL
+            tableName: product
+  - changeSet:
+      id: 1716410273327-10
+      author: siamo (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_purchase
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: quantity
+                  type: INT
+              - column:
+                  name: product_id
+                  type: BIGINT
+              - column:
+                  name: customer_id
+                  type: BIGINT
+            tableName: purchase
+
+  - changeSet:
+      id: 1716410273327-12
+      author: siamo (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: customer_id
+            baseTableName: purchase
+            constraintName: FK_PURCHASE_ON_CUSTOMER
+            referencedColumnNames: id
+            referencedTableName: customer
+  - changeSet:
+      id: 1716410273327-13
+      author: siamo (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: product_id
+            baseTableName: purchase
+            constraintName: FK_PURCHASE_ON_PRODUCT
+            referencedColumnNames: id
+            referencedTableName: product
+
