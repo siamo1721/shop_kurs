@@ -33,10 +33,10 @@ public class SpringSecurityConfiguration {
                                 .requestMatchers(HttpMethod.PUT, "/api/employees/**").hasAuthority(UserAuthority.manager.getAuthority())
                                 .requestMatchers(HttpMethod.DELETE, "/api/employees/**").hasAuthority(UserAuthority.manager.getAuthority())
 
-                                .requestMatchers(HttpMethod.GET, "/api/products/**").hasAuthority(UserAuthority.seller.getAuthority())
-                                .requestMatchers(HttpMethod.POST, "/api/products/**").hasAuthority(UserAuthority.seller.getAuthority())
-                                .requestMatchers(HttpMethod.PUT, "/api/products/**").hasAuthority(UserAuthority.seller.getAuthority())
-                                .requestMatchers(HttpMethod.DELETE, "/api/products/**").hasAuthority(UserAuthority.seller.getAuthority())
+                                .requestMatchers(HttpMethod.GET, "/api/products/**").permitAll()
+                                .requestMatchers(HttpMethod.POST, "/api/products/**").permitAll()
+                                .requestMatchers(HttpMethod.PUT, "/api/products/**").permitAll()
+                                .requestMatchers(HttpMethod.DELETE, "/api/products/**").permitAll()
 
                                 .requestMatchers(HttpMethod.GET, "/api/purchases/**").hasAuthority(UserAuthority.customer.getAuthority())
                                 .requestMatchers(HttpMethod.POST, "/api/purchases/**").hasAuthority(UserAuthority.customer.getAuthority())
