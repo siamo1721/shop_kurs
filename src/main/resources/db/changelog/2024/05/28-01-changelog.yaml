@@ -1,0 +1,62 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1716876278105-1
+      author: siamo (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: cart_item_id_seq
+            startValue: 1
+
+  - changeSet:
+      id: 1716876278105-8
+      author: siamo (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_cart_items
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: product_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: quantity
+                  type: INT
+              - column:
+                  name: user_id
+                  type: BIGINT
+            tableName: cart_items
+
+  - changeSet:
+      id: 1716876278105-16
+      author: siamo (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: product_id
+            baseTableName: cart_items
+            constraintName: FK_CART_ITEMS_ON_PRODUCT
+            referencedColumnNames: id
+            referencedTableName: products
+  - changeSet:
+      id: 1716876278105-17
+      author: siamo (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: cart_items
+            constraintName: FK_CART_ITEMS_ON_USER
+            referencedColumnNames: id
+            referencedTableName: users
+
+

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import {Link} from "react-router-dom";
 
 const HomePage = () => {
     const [products, setProducts] = useState([]);
@@ -47,6 +48,12 @@ const HomePage = () => {
 
     return (
         <div className="container">
+            <Link to="/registration">
+                <button>Register</button>
+            </Link>
+            <Link to="/login">
+                <button>Login</button>
+            </Link>
             <header>
                 <h1>Products</h1>
             </header>
@@ -80,6 +87,7 @@ const HomePage = () => {
                 <p>&copy; полный кал</p>
             </footer>
         </div>
+
     );
 };
 

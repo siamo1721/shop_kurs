@@ -1,20 +1,38 @@
-import React from 'react';
+document.addEventListener('DOMContentLoaded', async () => {
+    const cartItemsDiv = document.getElementById('cart-items');
 
-const CartPage = () => {
-    return (
-        <div className="container">
-            <header>
-                <h1>Your Cart</h1>
-            </header>
-            <nav>
-                <a href="/">Home</a>
-                <a href="/cart">Cart</a>
-                <a href="/user">User</a>
-            </nav>
-            <h1>Cart</h1>
-            {/* Здесь будет отображение товаров в корзине */}
-        </div>
-    );
-};
+    // Fetch cart items
+    const response = await fetch('/api/cart');
+    const cartItems = await response.json();
 
-export default CartPage;
+    if (cartItems.length === 0) {
+        cartItemsDiv.innerHTML = '<p>Your cart is empty</p>';
+    } else {
+        cartItems.forEach(item => {
+            const cartItemDiv = document.createElement('div');
+            cartItemDiv.className = 'cart-item';
+            cartItemDiv.innerHTML = `
+                <h3>${item.product.name}</h3>
+                <p>Quantity: ${item.quantity}</p>
+                <p>Price: $${item.product.price}</p>
+                <button data-cart-item-id="${item.id}">Remove</button>
+            `;
+            cartItemsDiv.appendChild(cartItemDiv);
+        });
+
+        // Remove from cart
+        document.querySelectorAll('.cart-item button').forEach(button => {
+            button.addEventListener('click', async (e) => {
+                const cartItemId = e.target.dataset.cartItemId;
+                const response = await fetch(`/api/cart/${cartItemId}`, {
+                    method: 'DELETE'
+                });
+                if (response.ok) {
+                    window.location.reload();
+                } else {
+                    alert('Failed to remove item');
+                }
+            });
+        });
+    }
+});

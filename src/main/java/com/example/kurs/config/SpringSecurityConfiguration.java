@@ -38,10 +38,11 @@ public class SpringSecurityConfiguration {
                                 .requestMatchers(HttpMethod.PUT, "/api/products/**").permitAll()
                                 .requestMatchers(HttpMethod.DELETE, "/api/products/**").permitAll()
 
-                                .requestMatchers(HttpMethod.GET, "/api/purchases/**").hasAuthority(UserAuthority.customer.getAuthority())
-                                .requestMatchers(HttpMethod.POST, "/api/purchases/**").hasAuthority(UserAuthority.customer.getAuthority())
-                                .requestMatchers(HttpMethod.PUT, "/api/purchases/**").hasAuthority(UserAuthority.customer.getAuthority())
-                                .requestMatchers(HttpMethod.DELETE, "/api/purchases/**").hasAuthority(UserAuthority.customer.getAuthority())
+                                .requestMatchers(HttpMethod.GET, "/api/cart/**").permitAll()
+                                .requestMatchers(HttpMethod.POST, "/api/cart/**").permitAll()
+                                .requestMatchers(HttpMethod.PUT, "/api/cart/**").permitAll()
+                                .requestMatchers(HttpMethod.DELETE, "/api/cart/**").permitAll()
+
 
                                 .requestMatchers(HttpMethod.GET, "/api/orders/**").hasAuthority(UserAuthority.manager.getAuthority())
                                 .requestMatchers(HttpMethod.POST, "/api/orders/**").hasAuthority(UserAuthority.manager.getAuthority())
