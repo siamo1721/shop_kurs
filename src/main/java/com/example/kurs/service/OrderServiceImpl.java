@@ -41,7 +41,7 @@ public class OrderServiceImpl implements OrderService {
 
         Order order = new Order();
         order.setCustomer(customer);
-        order.setUser(user); // Устанавливаем пользователя
+        order.setUser(user);
         order.setOrderDate(LocalDateTime.now());
 
         List<OrderItem> orderItems = new ArrayList<>();
@@ -88,4 +88,5 @@ public class OrderServiceImpl implements OrderService {
         Order order = getOrderById(id);
         orderRepository.delete(order);
     }
+
 }

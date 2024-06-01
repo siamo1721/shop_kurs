@@ -1,5 +1,6 @@
 package com.example.kurs.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -34,9 +35,13 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_id_seq")
     private Long id;
     private String username;
+    @JsonIgnore
     private String password;
+    @JsonIgnore
     private boolean expired;
+    @JsonIgnore
     private boolean locked;
+    @JsonIgnore
     private boolean enabled;
 
     @OneToMany(mappedBy = "user", orphanRemoval = true, fetch = FetchType.EAGER)
@@ -56,22 +61,21 @@ public class User implements UserDetails {
     public String getUsername() {
         return username;
     }
-
+    @JsonIgnore
     @Override
     public boolean isAccountNonExpired() {
         return !expired;
     }
-
+    @JsonIgnore
     @Override
     public boolean isAccountNonLocked() {
         return !locked;
     }
-
+    @JsonIgnore
     @Override
     public boolean isCredentialsNonExpired() {
         return !expired;
     }
-
     @Override
     public boolean isEnabled() {
         return enabled;

@@ -1,0 +1,43 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1717227482827-9
+      author: siamo (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_customers
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: first_name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: last_name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: phone
+                  type: VARCHAR(255)
+              - column:
+                  name: secondary_phone
+                  type: VARCHAR(255)
+            tableName: customers
+  - changeSet:
+      id: 1717227482827-2
+      author: siamo (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: customer_seq
+            startValue: 1

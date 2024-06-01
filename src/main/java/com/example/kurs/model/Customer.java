@@ -31,10 +31,4 @@ public class Customer {
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Order> orders;
 
-    private String username;
-    private String password;
-
-
-
-
 }

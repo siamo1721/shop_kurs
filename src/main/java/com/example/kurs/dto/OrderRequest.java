@@ -14,5 +14,4 @@ public class OrderRequest {
     private BigDecimal totalAmount;
     private LocalDateTime orderDate;
     private List<OrderItemRequest> orderItems;
-
 }

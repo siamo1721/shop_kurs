@@ -1,7 +1,24 @@
 databaseChangeLog:
-
   - changeSet:
-      id: 1716726439620-2
+      id: 1717228118883-1
+      author: siamo (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: cart_item_id_seq
+            startValue: 1
+  - changeSet:
+      id: 1717228118883-2
+      author: siamo (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: customer_seq
+            startValue: 1
+  - changeSet:
+      id: 1717228118883-3
       author: siamo (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -10,7 +27,7 @@ databaseChangeLog:
             sequenceName: employee_seq
             startValue: 1
   - changeSet:
-      id: 1716726439620-3
+      id: 1717228118883-4
       author: siamo (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -19,7 +36,7 @@ databaseChangeLog:
             sequenceName: order_seq
             startValue: 1
   - changeSet:
-      id: 1716726439620-4
+      id: 1717228118883-5
       author: siamo (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -28,16 +45,7 @@ databaseChangeLog:
             sequenceName: product_seq
             startValue: 1
   - changeSet:
-      id: 1716726439620-5
-      author: siamo (generated)
-      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
-      changes:
-        - createSequence:
-            incrementBy: 1
-            sequenceName: purchase_seq
-            startValue: 1
-  - changeSet:
-      id: 1716726439620-6
+      id: 1717228118883-6
       author: siamo (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -46,7 +54,7 @@ databaseChangeLog:
             sequenceName: user_id_seq
             startValue: 1
   - changeSet:
-      id: 1716726439620-7
+      id: 1717228118883-7
       author: siamo (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -54,9 +62,67 @@ databaseChangeLog:
             incrementBy: 1
             sequenceName: user_role_id_seq
             startValue: 1
-
   - changeSet:
-      id: 1716726439620-9
+      id: 1717228118883-8
+      author: siamo (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_cart_items
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: product_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: quantity
+                  type: INT
+              - column:
+                  name: user_id
+                  type: BIGINT
+            tableName: cart_items
+  - changeSet:
+      id: 1717228118883-9
+      author: siamo (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_customers
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: first_name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: last_name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: phone
+                  type: VARCHAR(255)
+              - column:
+                  name: secondary_phone
+                  type: VARCHAR(255)
+            tableName: customers
+  - changeSet:
+      id: 1717228118883-10
       author: siamo (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -86,7 +152,7 @@ databaseChangeLog:
                   type: VARCHAR(255)
             tableName: employees
   - changeSet:
-      id: 1716726439620-10
+      id: 1717228118883-11
       author: siamo (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -115,7 +181,7 @@ databaseChangeLog:
                   type: INT
             tableName: order_item
   - changeSet:
-      id: 1716726439620-11
+      id: 1717228118883-12
       author: siamo (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -150,7 +216,7 @@ databaseChangeLog:
                   type: BIGINT
             tableName: orders
   - changeSet:
-      id: 1716726439620-12
+      id: 1717228118883-13
       author: siamo (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -183,37 +249,7 @@ databaseChangeLog:
                   type: DOUBLE
             tableName: products
   - changeSet:
-      id: 1716726439620-13
-      author: siamo (generated)
-      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
-      changes:
-        - createTable:
-            columns:
-              - column:
-                  constraints:
-                    nullable: false
-                    primaryKey: true
-                    primaryKeyName: pk_purchases
-                  name: id
-                  type: BIGINT
-              - column:
-                  constraints:
-                    nullable: false
-                  name: product_id
-                  type: BIGINT
-              - column:
-                  constraints:
-                    nullable: false
-                  name: customer_id
-                  type: BIGINT
-              - column:
-                  constraints:
-                    nullable: false
-                  name: quantity
-                  type: INT
-            tableName: purchases
-  - changeSet:
-      id: 1716726439620-14
+      id: 1717228118883-14
       author: siamo (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -234,7 +270,7 @@ databaseChangeLog:
                   type: BIGINT
             tableName: user_roles
   - changeSet:
-      id: 1716726439620-15
+      id: 1717228118883-15
       author: siamo (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -270,7 +306,29 @@ databaseChangeLog:
                   type: BOOLEAN
             tableName: users
   - changeSet:
-      id: 1716726439620-16
+      id: 1717228118883-16
+      author: siamo (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: product_id
+            baseTableName: cart_items
+            constraintName: FK_CART_ITEMS_ON_PRODUCT
+            referencedColumnNames: id
+            referencedTableName: products
+  - changeSet:
+      id: 1717228118883-17
+      author: siamo (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: cart_items
+            constraintName: FK_CART_ITEMS_ON_USER
+            referencedColumnNames: id
+            referencedTableName: users
+  - changeSet:
+      id: 1717228118883-18
       author: siamo (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -281,7 +339,7 @@ databaseChangeLog:
             referencedColumnNames: id
             referencedTableName: orders
   - changeSet:
-      id: 1716726439620-17
+      id: 1717228118883-19
       author: siamo (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -292,7 +350,7 @@ databaseChangeLog:
             referencedColumnNames: id
             referencedTableName: products
   - changeSet:
-      id: 1716726439620-18
+      id: 1717228118883-20
       author: siamo (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -303,7 +361,7 @@ databaseChangeLog:
             referencedColumnNames: id
             referencedTableName: customers
   - changeSet:
-      id: 1716726439620-19
+      id: 1717228118883-21
       author: siamo (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -314,29 +372,7 @@ databaseChangeLog:
             referencedColumnNames: id
             referencedTableName: users
   - changeSet:
-      id: 1716726439620-20
-      author: siamo (generated)
-      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
-      changes:
-        - addForeignKeyConstraint:
-            baseColumnNames: customer_id
-            baseTableName: purchases
-            constraintName: FK_PURCHASES_ON_CUSTOMER
-            referencedColumnNames: id
-            referencedTableName: customers
-  - changeSet:
-      id: 1716726439620-21
-      author: siamo (generated)
-      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
-      changes:
-        - addForeignKeyConstraint:
-            baseColumnNames: product_id
-            baseTableName: purchases
-            constraintName: FK_PURCHASES_ON_PRODUCT
-            referencedColumnNames: id
-            referencedTableName: products
-  - changeSet:
-      id: 1716726439620-22
+      id: 1717228118883-22
       author: siamo (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:

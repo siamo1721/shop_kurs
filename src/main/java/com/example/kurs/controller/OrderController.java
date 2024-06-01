@@ -30,7 +30,6 @@ public class OrderController {
 
     @PostMapping
     public ResponseEntity<Order> createOrder(@RequestBody OrderRequest orderRequest) {
-        // Получаем текущего пользователя из контекста безопасности
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Order order = orderService.createOrder(orderRequest, user);
         return ResponseEntity.ok(order);
