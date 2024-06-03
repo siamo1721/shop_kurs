@@ -25,9 +25,7 @@ public class SpringSecurityConfiguration {
 
                                 .requestMatchers( "/api/customers/**").hasAuthority(UserAuthority.customer.getAuthority())
 
-
                                 .requestMatchers( "/api/employees/**").hasAuthority(UserAuthority.manager.getAuthority())
-
 
                                 .requestMatchers(HttpMethod.GET, "/api/products/**").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/api/products/**").hasAuthority(UserAuthority.seller.getAuthority())

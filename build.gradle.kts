@@ -31,6 +31,7 @@ dependencies {
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.security:spring-security-test")
+	implementation ("org.springframework.boot:spring-boot-starter-actuator")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 	testImplementation ("org.springframework.boot:spring-boot-starter-test")
 	testImplementation ("com.h2database:h2")

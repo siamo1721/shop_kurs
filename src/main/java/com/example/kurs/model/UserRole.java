@@ -12,7 +12,6 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.*;
 
-@Data
 @Getter
 @Setter
 @Table(name = "user_roles")
