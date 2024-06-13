@@ -73,7 +73,6 @@ public class OrderServiceImpl implements OrderService {
         order.setTotalAmount(totalAmount);
         orderRepository.save(order);
 
-        // Очищаем корзину после оформления заказа
         cart.getItems().clear();
         cartRepository.save(cart);
 
