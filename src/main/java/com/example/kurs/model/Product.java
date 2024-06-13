@@ -27,9 +27,5 @@ public class Product {
 
     @Column(name = "discount")
     private Double discount;
-
-
-
-
 }
 

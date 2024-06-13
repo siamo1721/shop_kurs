@@ -23,16 +23,16 @@ public class SpringSecurityConfiguration {
                         expressionInterceptUrlRegistry
                                 .requestMatchers("/registration", "/login").permitAll()
 
-                                .requestMatchers( "/api/customers/**").hasAuthority(UserAuthority.customer.getAuthority())
+                                .requestMatchers( "/api/customers/**").hasAnyAuthority(UserAuthority.manager.getAuthority(),UserAuthority.customer.getAuthority())
 
                                 .requestMatchers( "/api/employees/**").hasAuthority(UserAuthority.manager.getAuthority())
 
                                 .requestMatchers(HttpMethod.GET, "/api/products/**").permitAll()
-                                .requestMatchers(HttpMethod.POST, "/api/products/**").hasAuthority(UserAuthority.seller.getAuthority())
-                                .requestMatchers(HttpMethod.PUT, "/api/products/**").hasAuthority(UserAuthority.seller.getAuthority())
-                                .requestMatchers(HttpMethod.DELETE, "/api/products/**").hasAuthority(UserAuthority.seller.getAuthority())
+                                .requestMatchers(HttpMethod.POST, "/api/products/**").hasAnyAuthority( UserAuthority.manager.getAuthority(),UserAuthority.seller.getAuthority())
+                                .requestMatchers(HttpMethod.PUT, "/api/products/**").hasAnyAuthority( UserAuthority.manager.getAuthority(),UserAuthority.seller.getAuthority())
+                                .requestMatchers(HttpMethod.DELETE, "/api/products/**").hasAnyAuthority( UserAuthority.manager.getAuthority(),UserAuthority.seller.getAuthority())
 
-                                .requestMatchers( "/api/cart/**").permitAll()
+                                .requestMatchers("/api/cart/**").permitAll()
 
                                 .requestMatchers(HttpMethod.GET, "/api/orders/**").hasAuthority(UserAuthority.manager.getAuthority())
                                 .requestMatchers(HttpMethod.POST, "/api/orders/**").permitAll()
