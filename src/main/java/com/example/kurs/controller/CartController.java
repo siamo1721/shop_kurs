@@ -1,5 +1,6 @@
 package com.example.kurs.controller;
 
+import com.example.kurs.model.Cart;
 import com.example.kurs.model.CartItem;
 import com.example.kurs.model.User;
 import com.example.kurs.service.CartService;
@@ -24,13 +25,19 @@ public class CartController {
 
     @PostMapping
     public void addToCart(@RequestBody Map<String, Object> payload, @AuthenticationPrincipal User user) {
+        Long cartId = ((Number) payload.get("cartId")).longValue();
         Long productId = ((Number) payload.get("productId")).longValue();
         int quantity = (Integer) payload.get("quantity");
-        cartService.addToCart(productId, quantity, user);
+        cartService.addToCart(cartId, productId, quantity);
     }
 
     @DeleteMapping("/{cartItemId}")
     public void removeFromCart(@PathVariable Long cartItemId, @AuthenticationPrincipal User user) {
-        cartService.removeFromCart(cartItemId, user);
+        cartService.removeFromCart(cartItemId);
+    }
+
+    @PostMapping("/create")
+    public Cart createCart(@AuthenticationPrincipal User user) {
+        return cartService.createCart(user);
     }
 }

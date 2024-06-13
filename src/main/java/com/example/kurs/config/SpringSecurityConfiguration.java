@@ -38,6 +38,9 @@ public class SpringSecurityConfiguration {
                                 .requestMatchers(HttpMethod.POST, "/api/orders/**").permitAll()
                                 .requestMatchers(HttpMethod.PUT, "/api/orders/**").hasAuthority(UserAuthority.manager.getAuthority())
                                 .requestMatchers(HttpMethod.DELETE, "/api/orders/**").hasAuthority(UserAuthority.manager.getAuthority())
+
+                                .requestMatchers( "/api/from-cart/**").permitAll()
+
                                 .anyRequest().hasAuthority(UserAuthority.admin.getAuthority()))
                 .formLogin(Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable);

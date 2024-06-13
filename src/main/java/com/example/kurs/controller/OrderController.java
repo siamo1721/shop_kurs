@@ -1,12 +1,10 @@
 package com.example.kurs.controller;
 
-import com.example.kurs.dto.OrderRequest;
+import com.example.kurs.dto.OrderFromCartRequest;
 import com.example.kurs.model.Order;
-import com.example.kurs.model.User;
 import com.example.kurs.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,13 +26,6 @@ public class OrderController {
         return ResponseEntity.ok(order);
     }
 
-    @PostMapping
-    public ResponseEntity<Order> createOrder(@RequestBody OrderRequest orderRequest) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Order order = orderService.createOrder(orderRequest, user);
-        return ResponseEntity.ok(order);
-    }
-
     @PutMapping("/{id}")
     public ResponseEntity<Order> updateOrder(@PathVariable Long id, @RequestBody Order orderDetails) {
         Order updatedOrder = orderService.updateOrder(id, orderDetails);
@@ -45,5 +36,11 @@ public class OrderController {
     public ResponseEntity<Void> deleteOrder(@PathVariable Long id) {
         orderService.deleteOrder(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/from-cart")
+    public ResponseEntity<Order> createOrderFromCart(@RequestBody OrderFromCartRequest orderRequest) {
+        Order order = orderService.createOrderFromCart(orderRequest);
+        return ResponseEntity.ok(order);
     }
 }
